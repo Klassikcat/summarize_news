@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+세줄뉴스
+{% endblock %}
+
+{% block lead %}
+긴 뉴스 보긴 싫고, 무슨 일이 일어났는지는 알고 싶을 때,
+세줄 뉴스
+{% endblock %}
+
+{% block main_body %}
+<style type="text/css">
+.tg  {border-collapse:collapse;border-color:#aabcfe;border-spacing:0;}
+.tg td{background-color:#e8edff;border-color:#aabcfe;border-style:solid;border-width:1px;color:#669;
+  font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg th{background-color:#b9c9fe;border-color:#aabcfe;border-style:solid;border-width:1px;color:#039;
+  font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg .tg-0269{background-color:#ecf4ff;color:#343434;text-align:left;vertical-align:top}
+.tg .tg-5qb8{background-color:#ffffff;text-align:right;vertical-align:top}
+.tg .tg-6sgx{background-color:#ffffff;text-align:left;vertical-align:top}
+</style>
+<table class="tg">
+<thead>
+  <tr>
+    <th class="tg-0269">번호</th>
+    <th class="tg-0269">url</th>
+    <th class="tg-0269">언론사</th>
+    <th class="tg-0269">제목</th>
+    <th class="tg-0269">내용</th>
+  </tr>
+</thead>
+{% for i in range(10) %}
+<tbody>
+  <tr>
+          <td class="tg-6sgx">{{ loop.index0 }}</td>
+          <td class="tg-6sgx">{{ article_urls[i] }}</td>
+          <td class="tg-5qb8">{{ press_names[i] }}</td>
+          <td class="tg-5qb8">{{ titles[i] }}</td>
+          <td class="tg-5qb8">{{ texts[i] }}</td>
+  </tr>
+</tbody>
+{% endfor %}
+</table>
+{% endblock %}

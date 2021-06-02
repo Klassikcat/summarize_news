@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block alert %}
+{% if alert_msg %}
+<div class="alert alert-{{ alert_msg.type }}" role="alert">
+  {{ alert_msg.msg }}
+</div>
+{% endif %}
+{% endblock %}
+
+{% block title %}
+User Index
+{% endblock %}
+
+{% block lead %}
+뉴스 요약본을 조회, 추가, 삭제할 수 있습니다.
+{% endblock %}
+
+{% block main_body %}
+<form method="POST" action="/api/article">
+  <input name="url" style="margin-bottom:10px" class="form-control" type="text" placeholder="뉴스의 url을 입력하세요.">
+  <input type="submit" class="btn btn-primary" value="Add" />
+</form>
+
+{% if article in lists %}
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">article</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for article in lists %}
+    <tr>
+      <th scope="row">{{ lists.title }}</th>
+      <td>{{ list.article }}</td>
+      <td>
+        <a class="btn btn-secondary", href='/api/user/{{ lists.title }}'>
+          Delete
+        </a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endif %}
+
+{% endblock %}
+

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+        <head>
+        <!-- CSS only -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <!-- JavaScript Bundle with Popper -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+        <meta charset="utf-8" />
+        </head>
+        {% block head %}{% endblock %}
+        <body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color:#e3f2fd;">
+  <div class="container-fluid">
+          <a class="navbar-brand" href="#"><span style="font-weight: bold;">바쁘니까 세줄요약좀</span></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">홈</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/api/article">뉴스 요약하기</a>
+        </li>
+      </ul>
+      <form class="d-flex">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
+{% block alert %}
+{% endblock %}
+<div class="container">
+        <div_class="jumbotorn">
+        <h1 class="display-4">{% block title %}{% endblock %}</h1>
+        <p class="lead">{% block lead %}{% endblock %}</p>
+        <hr class="my-4">
+        <p>{% block main_body %}{% endblock %}
+</div>
+</div>
+        </body>
+</html>
