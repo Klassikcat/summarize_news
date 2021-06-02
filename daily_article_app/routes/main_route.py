@@ -24,4 +24,4 @@ def article_summary():
     msg_code = request.args.get('msg_code', None)
     alert_msg = main_funcs.msg_processor(msg_code) if msg_code is not None else None
     get_all = article_model.get_articles() 
-    return render_template('articles.html', alert_msg=alert_msg, lists=get_all)
+    return render_template('articles.html', alert_msg=alert_msg, get_all=get_all)

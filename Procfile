@@ -1,1 +1,1 @@
-gunicorn --workers=1 'daily_article_app:create_app()'
+gunicorn --workers=2 'daily_article_app : create_app()'

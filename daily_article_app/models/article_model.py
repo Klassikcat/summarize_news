@@ -24,8 +24,7 @@ def add_article(url):
             text = summarize_txt(get_one_article_text(url)[1]),
             url = url.split('&')[4].lstrip('aid=')
             )
-    session.query(Article)
-    if Article.query.filter(title==new_article.title).first() == None:
+    if not db.session.query(Article).filter_by(title=new_article.title).first():
         db.session.add(new_article)
         db.session.commit()
 
@@ -33,21 +32,14 @@ def get_articles():
     return db.session.query(Article).all()
 
 def get_one_article(target_name):
-    try:
-        return session.query(Article).filter_by(url=target_name).first()
-    except:
-        return None
+    return db.session.query(Article).filter_by(url=target_name).first()
 
 def del_one_article(title):
-    article_name = session.query(Article).filter_by(Article.title == title).first()
-    if title:
-        db.session.query(Article)
-        db.session.delete(article_name)
-        db.session.commit()
+    article_name = db.session.query(Article).filter_by(Article.title == title).first()
+    db.session.delete(article_name)
+    db.session.commit()
 
 def del_all_article_domain(domain_id):
-    domain_all = Article.query.filter_by(Article.domain_id == domain_id).all()
-    if domain_id:
-        for i in domain_all:
-            db.session.delete(domain_all[i])
-            db.session.commit()
+    domain_all = db.session.query(Article).filter_by(Article.domain_id == domain_id).all()
+    db.session.delete(domain_all[i])
+    db.session.commit()

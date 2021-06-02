@@ -18,11 +18,11 @@ User Index
 
 {% block main_body %}
 <form method="POST" action="/api/article">
-  <input name="url" style="margin-bottom:10px" class="form-control" type="text" placeholder="뉴스의 url을 입력하세요.">
+  <input name="url_submit" style="margin-bottom:10px" class="form-control" type="text" placeholder="뉴스의 url을 입력하세요.">
   <input type="submit" class="btn btn-primary" value="Add" />
 </form>
 
-{% if article in lists %}
+{% if article in get_all %}
 <table class="table">
   <thead>
     <tr>
@@ -31,12 +31,12 @@ User Index
     </tr>
   </thead>
   <tbody>
-    {% for article in lists %}
+    {% for article in get_all %}
     <tr>
-      <th scope="row">{{ lists.title }}</th>
-      <td>{{ list.article }}</td>
+      <th scope="row">{{ get_all.title }}</th>
+      <td>{{ get_all.article }}</td>
       <td>
-        <a class="btn btn-secondary", href='/api/user/{{ lists.title }}'>
+        <a class="btn btn-secondary", href='/api/user/{{ get_all.title }}'>
           Delete
         </a>
       </td>
