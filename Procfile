@@ -1,1 +1,1 @@
-web: gunicorn -w 3 daily_article_app:app
+gunicorn --workers=1 'daily_article_app:create_app()'
